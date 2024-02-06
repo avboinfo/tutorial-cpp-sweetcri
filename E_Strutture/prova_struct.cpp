@@ -5,6 +5,7 @@
 */
 
 #include <iostream>
+
 using namespace std;
 
 /* Il tipo di dato "struct" serve per memorizzare dati di tipi uguali o diversi
