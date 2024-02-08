@@ -11,6 +11,11 @@ using namespace std;
 
 const string FILENAME = "SortingArray.txt";
 
+int calcoloFattoriale( int n ) {
+    if (n==1) return 1;
+    else return n * calcoloFattoriale(n-1);
+}
+
 void stampaVettore( string v[], int l ) {
     cout << endl;
     for (int i=0; i<l; i++) cout << v[i] << "\n";
@@ -38,6 +43,8 @@ int bubbleSort( string v[], int l ) {
 
 int main()
 {
+    cout << calcoloFattoriale( 6 ) << endl;
+    return 0;
     ifstream f;
     f.open(FILENAME);
     if ( f.fail() ) { cout << "Il file di input non esiste"; return -1; }
