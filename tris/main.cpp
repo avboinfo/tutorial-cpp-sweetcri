@@ -82,6 +82,7 @@ class Tris{
             if(risultato != 0)
                 return risultato;
         }
+        return controlla_diagonali();
         
     }
 
@@ -124,9 +125,36 @@ private:
         return 0;
     }
     
-    //int controlla_diagolani(){
-        
-    //}
+    int controlla_diagonali(){
+      int acc_1 = 0;
+      int acc_2 = 0;
+      //diagonale principale
+      for(int i=0;i<3;i++){
+        int cella =griglia[i][i];
+        if (cella == 1)
+            acc_1++;
+        if (cella ==2 )
+            acc_2++;
+      }
+      if(acc_1 == 3)
+          return 1;
+      if(acc_2==3)
+          return 2;
+      //diagonale secondaria
+      acc_1 = 0;
+      acc_2 = 0;
+      for(int i=0;i<3;i++){
+        int cella =griglia[i][2-i];
+        if (cella == 1)
+            acc_1++;
+        if (cella ==2 )
+            acc_2++;
+      }
+      if(acc_1 == 3)
+          return 1;
+      if(acc_2==3)
+          return 2; 
+    }
 };
 
 
