@@ -13,6 +13,7 @@ using namespace std;
 ** attraverso il nome unico della struttura.
 */
 
+
 struct numeri
 {
     int val_uno;
