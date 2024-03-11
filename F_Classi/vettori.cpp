@@ -29,6 +29,14 @@ class vettore {
         len++;
     }
 
+    int getElement (int index){
+        return v[index];
+    }
+
+    void setElement(int index, int newvalue){
+        v[index] = newvalue;
+    }
+
     void print(){
         cout<<"contenuto del vettore: "<<endl;
         for(int i=0; i<len;i++){
@@ -44,10 +52,12 @@ class vettore {
 int main() {
     vettore vett(10);
 
-    for(int i=0;i<15;i++) vett.add(33*i);
+    for(int i=0;i<100;i++) vett.add(i);
     //vett.add(33);
     //vett.add(333);
     //vett.print();
+    cout<< vett.getElement(10)<<endl;
+    vett.setElement(10, 333);
     vett.print();
 
 }
