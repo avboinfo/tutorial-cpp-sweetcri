@@ -1,21 +1,27 @@
 /*
 matrici come tipo di variabile
+Dolce Davide - 20/04/2024
 */
 
 #include <iostream>
 #include <time.h>
 
 const int DIM = 10;
+const char SHIP = 'X';
+const char MISS = 'O';
+const char HIT = '*';
+const char VOID = '-';
+
 
 using namespace std;
 
 
-class Matrice {
+class BattelField {
     private:
         int m[DIM][DIM];
 
     public:
-        Matrice(){
+        BattelField(){
             for(int i=0;i<DIM;i++){
                 for(int j=0;j<DIM;j++){
                     m[i][j] =97 + rand()%26;
@@ -23,7 +29,7 @@ class Matrice {
             }
         }
 
-        Matrice(char c){
+        BattelField(char c){
             for(int i=0;i<DIM;i++){
                 for(int j=0;j<DIM;j++){
                     m[i][j] = c;
@@ -63,7 +69,7 @@ class Matrice {
             int x = rand()%DIM;
             int y = rand()%(DIM-len);
             for(int i=0;i<len;i++){
-                m[x][y+i] = 'O';
+                m[x][y+i] = SHIP;
             }
         }
 
@@ -72,29 +78,8 @@ class Matrice {
             int x = rand()%DIM;
             int y = rand()%(DIM-len);
             for(int i=0;i<len;i++){
-                m[x+i][y] = 'O';
+                m[x+i][y] = SHIP;
             }
         }
 };
 
-
-int main(){
-    srand(time(NULL));
-    Matrice mappa = Matrice('-');
-    Matrice campo = Matrice('-');
-    //Matrice m2 = Matrice();
-    campo.placeHorizontalShip(3);
-    campo.placeVerticalShip(4);
-    campo.placeVerticalShip(2);
-    campo.placeHorizontalShip(5);
-    mappa.stampa();
-    campo.stampa();
-    
-    //lancia 20 bombe a caso
-    for(int i=0;i<20;i++){
-        int x = rand()%DIM;
-        int y = rand()%DIM;
-        if (campo.get(x,y)=='O') mappa.put(x,y,'*');
-    }
-    mappa.stampa();
-}
