@@ -39,7 +39,25 @@ class BattleShip{
     
     }
     mappa.stampa();
+    
+    ask();
+
     campo.stampa();
+    }
+
+    void ask() {
+        cout<< "inserisci le coordinate di riga e colonna in cui sganciare la bomba: "<<endl;
+        int x, y;
+        cout<< "x: ";
+        cin >> x;
+        cout<< "y: ";
+        cin >> y;
+
+        if(campo.get(x,y)==SHIP){
+            mappa.put(x,y,HIT);
+            campo.put(x,y,HIT);
+
+        }else mappa.put(x,y,MISS);
     }
 
 
