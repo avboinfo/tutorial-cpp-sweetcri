@@ -1,6 +1,6 @@
 /**
  * main.cpp - il programma che goca a battaglia navale
- * Dolce Davide - 20/04/20204
+ * Dolce Davide - 20/04/2024
 */
 
 #include <iostream>

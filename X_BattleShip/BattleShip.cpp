@@ -5,60 +5,86 @@
 
 #include <iostream>
 #include "BattleField.cpp"
+
 using namespace std;
 
-class BattleShip{
-    
-    BattelField mappa;
-    BattelField campo;
-    
-    public: 
-     BattleShip(){
+class BattleShip
+{   
+private:
 
-        mappa = BattelField(VOID);
-        campo = BattelField(VOID);
+    BattleField mappa;
 
-        campo.placeHorizontalShip(3);
-        campo.placeVerticalShip(4);
-        campo.placeVerticalShip(2);
-        campo.placeHorizontalShip(5);
+    BattleField campo;
+    
+public:
+
+    BattleShip()
+    {
+        mappa = BattleField( VOID );
+        campo = BattleField( VOID );
+
+        campo.placeHorizontalShip( 3 );
+        campo.placeVerticalShip( 4 );
+
+        campo.placeVerticalShip( 2 );
+        campo.placeHorizontalShip( 5 );
+    } 
+
+    void play()
+    {
+        mappa.stampa();
+
+        while ( true )
+        {
+            mappa.stampa();
+
+            if ( !playHand() )
+                break;
+        }
+        
+        campo.stampa();
     }
-    
-    void play(){
-    
-    //lancia 20 bombe a caso
-    for(int i=0;i<20;i++){
-        int x = rand()%DIM;
-        int y = rand()%DIM;
-        if (campo.get(x,y)==HIT) continue;
-        if (campo.get(x,y)==SHIP) {
-            mappa.put(x,y,HIT);
-            campo.put(x,y,HIT);
 
-        } else mappa.put(x,y,MISS);
-    
-    }
-    mappa.stampa();
-    
-    ask();
+    bool playHand()
+    {
+        cout << "Inserisci le coordinate di riga e colonna ( 1 - " << DIM << " ) in cui sganciare la bomba( 0 per terminare il gioco)";
 
-    campo.stampa();
-    }
-
-    void ask() {
-        cout<< "inserisci le coordinate di riga e colonna in cui sganciare la bomba: "<<endl;
         int x, y;
-        cout<< "x: ";
+
         cin >> x;
-        cout<< "y: ";
+
+        if ( x<=0 )
+            return false;
+        else 
+            x--;    
+        
         cin >> y;
 
-        if(campo.get(x,y)==SHIP){
-            mappa.put(x,y,HIT);
-            campo.put(x,y,HIT);
+        if ( y<=0 )
+            return false;
+        else
+            y--;    
 
-        }else mappa.put(x,y,MISS);
+        if ( campo.get( x, y )==SHIP )
+        { 
+            mappa.put( x, y, HIT );
+
+            campo.put( x, y, HIT );
+        }
+        else
+            mappa.put ( x, y, MISS );
+
+        return true;    
     }
 
-
+    bool gameOver(){
+        for (int i=0;i<DIM;i++){
+            for(int j=0;j<DIM;j++){
+                if(campo.get(i,j) ==SHIP ){
+                    return false;
+                }
+            }
+            cout<< "tutte le navi sono state affondate"<<endl;
+        }return true;
+    }
 };

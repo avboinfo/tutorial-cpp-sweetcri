@@ -16,12 +16,12 @@ const char VOID = '-';
 using namespace std;
 
 
-class BattelField {
+class BattleField {
     private:
         int m[DIM][DIM];
 
     public:
-        BattelField(){
+        BattleField(){
             for(int i=0;i<DIM;i++){
                 for(int j=0;j<DIM;j++){
                     m[i][j] =97 + rand()%26;
@@ -29,7 +29,7 @@ class BattelField {
             }
         }
 
-        BattelField(char c){
+        BattleField(char c){
             for(int i=0;i<DIM;i++){
                 for(int j=0;j<DIM;j++){
                     m[i][j] = c;
