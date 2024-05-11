@@ -9,39 +9,39 @@ Dolce Davide
 using namespace std;
 
 int compra(int N, int M, int A, int B) {
-  if (N < 0){
+  if (N<0){
       return 0;
   }
   
-  if (M < 0){
+  if (M<0){
      return N * A; 
   } 
   
-  if (A < 0 || B < 0){
-    if (A < B){
-        return A * N;
+  if (A<0 || B<0){
+    if (A<B){
+        return A*N;
     } else {
-        return B * M;
+        return B*M;
     }
 }
   
-  if (A * N < B){
-      return A * N;
+  if (A*N<B){
+      return A*N;
       
   } 
 
-  int tmp = N / M;
+  int tmp = N/M;
 
-  int carnet = tmp * B;
+  int carnet = tmp*B;
 
-  if (N % M * A < B) return carnet + A * (N % M);
+  if (N%M * A<B) return carnet + A*(N%M);
 
   return carnet + B;
 
 }
 
 int main() {
-    FILE *fr, *fw;
+    FILE *fr,*fw;
     int N, M, A, B;
 
 
